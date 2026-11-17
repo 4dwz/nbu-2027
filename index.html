@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>خطة القبول في جامعة نينغبو 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one vertical flowchart rail on the right (RTL), phases as dark bands, decision points as amber diamonds with a red "no" branch. */
+:root{
+  --paper:#F3F5F2; --card:#FFFFFF; --ink:#17202A; --muted:#56626C; --line:#D3D9D5;
+  --accent:#0A6B6B; --accent-soft:#DCEEEB;
+  --gate:#A86A12; --gate-soft:#F7EAD2;
+  --stop:#B1352B; --stop-soft:#F6DDD9;
+  --ok:#2C7A4B;
+  --display:"Noto Kufi Arabic", "Segoe UI", Tahoma, sans-serif;
+  --body:"IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+  --latin:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1418; --card:#161D22; --ink:#E4EAE7; --muted:#9AA7AF; --line:#29333A;
+    --accent:#56B9B2; --accent-soft:#14302E;
+    --gate:#E2A84B; --gate-soft:#36290F;
+    --stop:#EE7C6F; --stop-soft:#3A1C18;
+    --ok:#6CC28F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1418; --card:#161D22; --ink:#E4EAE7; --muted:#9AA7AF; --line:#29333A;
+  --accent:#56B9B2; --accent-soft:#14302E;
+  --gate:#E2A84B; --gate-soft:#36290F;
+  --stop:#EE7C6F; --stop-soft:#3A1C18;
+  --ok:#6CC28F;
+  color-scheme: dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:28px 16px 64px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.45;margin:0}
+h1{font-size:clamp(25px,6vw,36px)}
+h2{font-size:22px;margin-bottom:12px}
+h3{font-size:17px}
+p{margin:0}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.en{font-family:var(--latin);direction:ltr;unicode-bidi:isolate}
+.d{direction:ltr;unicode-bidi:isolate;font-variant-numeric:tabular-nums}
+.mono{font-family:var(--mono);font-size:.86em;font-variant-numeric:tabular-nums;direction:ltr;unicode-bidi:isolate}
+.muted{color:var(--muted)}
+section{margin-top:40px}
+
+.kicker{font-size:13px;color:var(--accent);font-weight:600}
+.lede{margin-top:10px;color:var(--muted);max-width:62ch}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:18px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.fact b{display:block;font-family:var(--display);font-size:16px}
+.fact span{font-size:13px;color:var(--muted);line-height:1.6;display:block}
+
+.progress{position:sticky;top:0;z-index:5;margin:22px -16px 0;padding:10px 16px;background:var(--paper);border-bottom:1px solid var(--line)}
+.progress-row{display:flex;justify-content:space-between;gap:12px;align-items:baseline;font-size:14px}
+.bar{height:6px;background:var(--line);border-radius:99px;margin-top:6px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.next{font-size:13px;color:var(--muted);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.jump{display:flex;gap:6px;overflow-x:auto;margin-top:8px;padding-bottom:2px;scrollbar-width:none}
+.jump a{flex:none;font-size:12.5px;text-decoration:none;color:var(--ink);border:1px solid var(--line);background:var(--card);border-radius:99px;padding:2px 11px}
+
+.warn{display:grid;gap:10px}
+.w{background:var(--card);border:1px solid var(--line);border-inline-start:5px solid var(--stop);border-radius:10px;padding:12px 14px}
+.w.amber{border-inline-start-color:var(--gate)}
+.w h3{font-size:16px;margin-bottom:4px}
+.w p{font-size:15px}
+.tag{display:inline-block;font-size:11.5px;padding:0 8px;border-radius:99px;background:var(--stop-soft);color:var(--stop);margin-inline-start:6px;vertical-align:2px;font-family:var(--body);font-weight:600}
+.tag.amber{background:var(--gate-soft);color:var(--gate)}
+
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card);padding:8px 4px;direction:rtl}
+.gantt{display:block;width:100%;min-width:600px;height:auto;color:var(--ink);font-family:var(--body);direction:ltr}
+.g-grid{stroke:var(--line);stroke-width:1}
+.g-month,.g-year{font-size:11px;fill:var(--muted);font-family:var(--mono)}
+.g-lane0{fill:transparent}.g-lane1{fill:var(--paper);opacity:.6}
+.g-lanelabel{font-size:12px;font-weight:600;fill:var(--ink)}
+.g-bar{fill:var(--accent)}.g-bar-t{fill:#fff}
+.g-bar2{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1}.g-bar2-t{fill:var(--ink)}
+.g-warn{fill:var(--gate-soft);stroke:var(--gate);stroke-width:1}.g-warn-t{fill:var(--ink)}
+.g-barlabel{font-size:10.5px;font-weight:500}
+.g-out{fill:var(--ink)}
+.g-ms{fill:var(--gate)}
+.g-mslabel{font-size:10.5px;fill:var(--ink);font-weight:600}
+.g-bday{stroke:var(--gate);stroke-width:1.5;stroke-dasharray:4 3}
+.g-today{stroke:var(--stop);stroke-width:1.5}
+.g-note{font-size:10.5px;fill:var(--gate)}
+.g-today-t{fill:var(--stop)}
+figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);margin-top:6px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.sw{width:14px;height:9px;border-radius:2px;display:inline-block}
+
+.phase{margin-top:34px;scroll-margin-top:120px}
+.phase-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;padding:10px 14px;border-radius:10px;background:var(--ink);color:var(--paper)}
+.phase-head h2{font-size:19px;margin:0;color:var(--paper)}
+.phase-head .when{font-size:13px;opacity:.85}
+.phase-goal{font-size:14px;color:var(--muted);margin:8px 2px 0}
+.flow{position:relative;margin-top:14px;padding-inline-start:44px}
+.flow::before{content:"";position:absolute;inset-inline-start:17px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.node{position:relative;margin-bottom:16px}
+.node:last-child{margin-bottom:0}
+.dot{position:absolute;inset-inline-start:-44px;top:10px;width:36px;height:36px;border-radius:50%;background:var(--card);border:2px solid var(--accent);display:grid;place-items:center;font-family:var(--mono);font-size:13px;color:var(--accent);z-index:1}
+.node.gate .dot{border-radius:4px;transform:rotate(45deg) scale(.86);border-color:var(--gate);background:var(--gate-soft)}
+.node.gate .dot span{transform:rotate(-45deg);color:var(--gate);font-weight:600}
+.node.done .dot{background:var(--accent);color:var(--card)}
+.node.gate.done .dot{background:var(--gate)}
+.node.gate.done .dot span{color:var(--card)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 14px 12px}
+.node.gate .card{border-color:var(--gate);border-width:1.5px}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.date{display:inline-block;font-size:12.5px;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:0 8px;margin-bottom:6px;font-weight:600}
+.node.gate .date{color:var(--gate);background:var(--gate-soft)}
+.check{flex:none;display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);cursor:pointer;user-select:none;padding:4px 2px}
+.check input{width:20px;height:20px;accent-color:var(--accent);margin:0;cursor:pointer}
+.card ul,.card ol{margin:8px 0 0;padding-inline-start:20px}
+.card li{margin:4px 0;font-size:15px}
+.card p{font-size:15px;margin-top:8px}
+.why{font-size:14px;color:var(--muted)}
+.doneif{margin-top:10px;font-size:13.5px;padding-top:8px;border-top:1px dashed var(--line)}
+.doneif b{color:var(--ok);margin-inline-end:4px}
+.branches{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+@media (max-width:520px){.branches{grid-template-columns:1fr}}
+.br{border-radius:9px;padding:9px 11px;font-size:14px}
+.br b{display:block;font-size:13px;margin-bottom:2px}
+.br.yes{background:var(--accent-soft)}
+.br.yes b{color:var(--accent)}
+.br.no{background:var(--stop-soft)}
+.br.no b{color:var(--stop)}
+.note{margin-top:10px;font-size:14px;background:var(--gate-soft);border-radius:8px;padding:8px 10px}
+.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin-top:10px}
+.spec div{background:var(--paper);border-radius:8px;padding:8px 10px;font-size:13px;color:var(--muted)}
+.spec b{display:block;color:var(--ink);font-size:15px}
+
+.tbl{overflow-x:auto;margin-top:10px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:520px}
+th,td{text-align:start;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12.5px;color:var(--muted);font-weight:600;background:var(--paper)}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap;direction:ltr;text-align:end}
+tfoot td{font-weight:600}
+
+.tpl{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-top:12px}
+.tpl pre{white-space:pre-wrap;font-size:14px;margin:10px 0 0;background:var(--paper);border-radius:8px;padding:12px}
+.tpl pre[dir="ltr"]{font-family:var(--latin);text-align:left}
+.tpl pre[dir="rtl"]{font-family:var(--body);font-size:15px;line-height:1.9}
+.tpl-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
+button.copy{font:inherit;font-size:13px;font-weight:600;background:var(--accent);color:var(--card);border:0;border-radius:8px;padding:6px 14px;cursor:pointer}
+button.copy:active{transform:translateY(1px)}
+.src li{font-size:14px;margin:5px 0;overflow-wrap:anywhere}
+.small{font-size:13px}
+footer{margin-top:40px;font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">جامعة نينغبو <span class="en">(Ningbo University · NBU)</span> · دفعة شهر <span class="d">9/2027</span></div>
+  <h1>خطة القبول في جامعة نينغبو 2027</h1>
+  <p class="lede">كل خطوة بالترتيب من اليوم لحد ما يطلع إقامة الطالب في نينغبو. الخطة مكتوبة لطالب أردني عمره 17 سنة، يكمّل 18 في شهر <span class="d">3/2027</span>، بمسار <span class="en">BTEC</span> أعمال، ونتائج توجيهيه في شهر <span class="d">8/2027</span>، وبدّه يدرس <span class="en">Business Administration</span> (إدارة الأعمال). المعيّن (◆) يعني نقطة قرار. علّم على الخطوات كل ما تخلص؛ العلامات بتنحفظ على هذا الجهاز بس.</p>
+  <div class="facts">
+    <div class="fact"><b>امتحان <span class="en">CSCA</span></b><span>مطلوب من الجامعة. لإدارة الأعمال: رياضيات فقط، بالإنجليزي</span></div>
+    <div class="fact"><b><span class="en">IELTS 6.0</span></b><span>الهدف الآمن. ما انقدّم لسا: يحجز لشهر <span class="d">2</span></span></div>
+    <div class="fact"><b>20,000 يوان</b><span>رسوم أول سنة (حوالي 2,100 دينار)، تندفع بعد القبول المبدئي</span></div>
+    <div class="fact"><b>30 يوم</b><span>مهلة استخراج الإقامة بعد الوصول للصين</span></div>
+  </div>
+</header>
+
+<div class="progress" aria-live="polite">
+  <div class="progress-row"><b id="pcount">0 من 0 خطوات</b><span class="muted small">آخر بحث: <span class="d">17/11/2026</span></span></div>
+  <div class="bar"><i id="pbar"></i></div>
+  <div class="next" id="pnext">التالي: …</div>
+  <nav class="jump" aria-label="انتقل إلى مرحلة">
+    <a href="#read-first">اقرأ أولاً</a>
+    <a href="#phase-0">0 · القرار</a>
+    <a href="#phase-1">1 · الامتحانات</a>
+    <a href="#phase-2">2 · التقديم</a>
+    <a href="#phase-3">3 · القبول والدفع</a>
+    <a href="#phase-4">4 · التوجيهي والفيزا</a>
+    <a href="#phase-5">5 · الوصول</a>
+    <a href="#money">التكاليف</a>
+    <a href="#documents">الأوراق</a>
+    <a href="#templates">الرسائل الجاهزة</a>
+  </nav>
+</div>
+
+<section id="read-first" class="phase" style="margin-top:28px">
+  <h2>اقرأ أولاً: أمور مهمة لازم تنعرف من البداية</h2>
+  <div class="warn">
+    <div class="w">
+      <h3>لازم يقدّم امتحان <span class="en">CSCA</span> قبل التقديم <span class="tag">إجباري</span></h3>
+      <p>دليل الجامعة لسنة 2026 بيطلب علامة امتحان <span class="en">CSCA</span> (امتحان الكفاءة الأكاديمية للقبول في الجامعات الصينية) من كل متقدم للبكالوريوس. لإدارة الأعمال المطلوب الرياضيات بس، وفيه خيار يكون الامتحان بالإنجليزي. الامتحان أونلاين من البيت، ومواعيده: <span class="d">23–24/1</span>، <span class="d">13–14/3</span>، <span class="d">24–25/4</span>، <span class="d">26–27/6/2027</span>.</p>
+    </div>
+    <div class="w">
+      <h3>رياضيات <span class="en">BTEC</span> مش نفس رياضيات <span class="en">CSCA</span> <span class="tag">ابدأ هلأ</span></h3>
+      <p>مسار الأعمال في <span class="en">BTEC</span> فيه "رياضيات الأعمال"، أما رياضيات <span class="en">CSCA</span> فهي رياضيات ثانوي عامة: جبر، اقترانات، مثلثات، هندسة، احتمالات، وكلها 48 سؤال بساعة وبالإنجليزي. أفضل يبلش يدرسها من هلأ، ويقدم بشهر <span class="d">1</span> عشان يضل شهر <span class="d">3</span> فرصة إعادة.</p>
+    </div>
+    <div class="w amber">
+      <h3>ما في سياسة استرجاع منشورة لمبلغ الـ 20,000 يوان <span class="tag amber">اطلبها كتابياً</span></h3>
+      <p>الجامعة بتطلب رسوم أول سنة مباشرة بعد القبول المبدئي، قبل الفيزا وقبل نتائج التوجيهي. لازم ناخذ شروط الاسترجاع بإيميل قبل الدفع (الرسالة جاهزة تحت).</p>
+    </div>
+    <div class="w amber">
+      <h3>أمور صغيرة بس بتفرق <span class="tag amber">توقيت</span></h3>
+      <p>نموذج الفحص الطبي صالح 6 شهور بس، فما بنعمله بدري. الأردن مش عضو في اتفاقية الأبوستيل، فالوثائق بتتصدق من الخارجية ومن السفارة الصينية. تخفيض رسوم الفيزا الصينية مستمر لحد 31/12/2026 بس. قرعة خدمة العلم لمواليد 2009 متوقعة آخر 2027، والطالب اللي بيدرس برا بيقدر يأجّل.</p>
+    </div>
+  </div>
+</section>
+
+<section id="timeline">
+  <h2>الخطة على جدول زمني</h2>
+  <figure style="margin:0">
+    <div class="scroll">
+<svg viewBox="0 0 640 304" role="img" aria-label="جدول زمني من تشرين الثاني 2026 إلى أيلول 2027 في خمسة مسارات" class="gantt">
+<line x1="536.0" y1="32" x2="536.0" y2="270" class="g-grid"/>
+<text x="512.1" y="24" text-anchor="middle" class="g-month">11</text>
+<line x1="488.2" y1="32" x2="488.2" y2="270" class="g-grid"/>
+<text x="464.3" y="24" text-anchor="middle" class="g-month">12</text>
+<line x1="440.4" y1="32" x2="440.4" y2="270" class="g-grid"/>
+<text x="416.5" y="24" text-anchor="middle" class="g-month">1</text>
+<line x1="392.5" y1="32" x2="392.5" y2="270" class="g-grid"/>
+<text x="368.6" y="24" text-anchor="middle" class="g-month">2</text>
+<line x1="344.7" y1="32" x2="344.7" y2="270" class="g-grid"/>
+<text x="320.8" y="24" text-anchor="middle" class="g-month">3</text>
+<line x1="296.9" y1="32" x2="296.9" y2="270" class="g-grid"/>
+<text x="273.0" y="24" text-anchor="middle" class="g-month">4</text>
+<line x1="249.1" y1="32" x2="249.1" y2="270" class="g-grid"/>
+<text x="225.2" y="24" text-anchor="middle" class="g-month">5</text>
+<line x1="201.3" y1="32" x2="201.3" y2="270" class="g-grid"/>
+<text x="177.4" y="24" text-anchor="middle" class="g-month">6</text>
+<line x1="153.5" y1="32" x2="153.5" y2="270" class="g-grid"/>
+<text x="129.6" y="24" text-anchor="middle" class="g-month">7</text>
+<line x1="105.6" y1="32" x2="105.6" y2="270" class="g-grid"/>
+<text x="81.7" y="24" text-anchor="middle" class="g-month">8</text>
+<line x1="57.8" y1="32" x2="57.8" y2="270" class="g-grid"/>
+<text x="33.9" y="24" text-anchor="middle" class="g-month">9</text>
+<text x="512.1" y="14" text-anchor="middle" class="g-year">2026</text>
+<text x="440.4" y="14" text-anchor="end" class="g-year">← 2027</text>
+<rect x="0" y="40" width="640" height="46" class="g-lane0"/>
+<text x="632" y="67.0" text-anchor="end" class="g-lanelabel">القرار</text>
+<rect x="0" y="86" width="640" height="46" class="g-lane1"/>
+<text x="632" y="113.0" text-anchor="end" class="g-lanelabel">الامتحانات</text>
+<rect x="0" y="132" width="640" height="46" class="g-lane0"/>
+<text x="632" y="159.0" text-anchor="end" class="g-lanelabel">التقديم</text>
+<rect x="0" y="178" width="640" height="46" class="g-lane1"/>
+<text x="632" y="205.0" text-anchor="end" class="g-lanelabel">المدرسة</text>
+<rect x="0" y="224" width="640" height="46" class="g-lane0"/>
+<text x="632" y="251.0" text-anchor="end" class="g-lanelabel">الفيزا والسفر</text>
+<rect x="465.9" y="48" width="44.6" height="13" rx="3" class="g-bar"/>
+<text x="461.9" y="58" text-anchor="end" class="g-barlabel g-out">إيميل الجامعة</text>
+<rect x="440.4" y="64" width="70.1" height="13" rx="3" class="g-bar2"/>
+<text x="506.5" y="74" text-anchor="end" class="g-barlabel g-bar2-t">جواز السفر</text>
+<rect x="406.9" y="94" width="98.8" height="13" rx="3" class="g-bar"/>
+<text x="501.7" y="104" text-anchor="end" class="g-barlabel g-bar-t">تحضير</text>
+<polygon points="405.3,94.5 411.3,100.5 405.3,106.5 399.3,100.5" class="g-ms"/>
+<text x="396.3" y="104.5" text-anchor="end" class="g-mslabel">امتحان 23/1</text>
+<rect x="349.5" y="110" width="43.0" height="13" rx="3" class="g-bar2"/>
+<text x="388.5" y="120" text-anchor="end" class="g-barlabel g-bar2-t">IELTS</text>
+<polygon points="325.6,110.5 331.6,116.5 325.6,122.5 319.6,116.5" class="g-ms"/>
+<text x="316.6" y="120.5" text-anchor="end" class="g-mslabel">إعادة 13/3</text>
+<rect x="327.2" y="140" width="65.3" height="13" rx="3" class="g-bar2"/>
+<text x="388.5" y="150" text-anchor="end" class="g-barlabel g-bar2-t">الأوراق</text>
+<polygon points="314.4,140.5 320.4,146.5 314.4,152.5 308.4,146.5" class="g-ms"/>
+<text x="305.4" y="150.5" text-anchor="end" class="g-mslabel">التقديم</text>
+<rect x="155.0" y="156" width="141.9" height="13" rx="3" class="g-bar"/>
+<text x="151.0" y="166" text-anchor="end" class="g-barlabel g-out">مراجعة ← قبول مبدئي ← دفع</text>
+<rect x="179.0" y="186" width="331.5" height="13" rx="3" class="g-bar2"/>
+<text x="506.5" y="196" text-anchor="end" class="g-barlabel g-bar2-t">الصف 12 (حافظ على العلامات)</text>
+<rect x="115.2" y="202" width="71.7" height="13" rx="3" class="g-warn"/>
+<text x="111.2" y="212" text-anchor="end" class="g-barlabel g-out">امتحانات التوجيهي</text>
+<polygon points="91.3,186.5 97.3,192.5 91.3,198.5 85.3,192.5" class="g-ms"/>
+<text x="100.3" y="196.5" text-anchor="start" class="g-mslabel">النتائج ~8</text>
+<polygon points="311.3,232.5 317.3,238.5 311.3,244.5 305.3,238.5" class="g-ms"/>
+<text x="302.3" y="242.5" text-anchor="end" class="g-mslabel">الفحص الطبي</text>
+<rect x="83.3" y="248" width="39.9" height="13" rx="3" class="g-bar"/>
+<text x="79.3" y="258" text-anchor="end" class="g-barlabel g-out">الفيزا</text>
+<polygon points="62.6,232.5 68.6,238.5 62.6,244.5 56.6,238.5" class="g-ms"/>
+<text x="53.6" y="242.5" text-anchor="end" class="g-mslabel">السفر</text>
+<rect x="11.6" y="248" width="46.2" height="13" rx="3" class="g-warn"/>
+<text x="7.6" y="258" text-anchor="end" class="g-barlabel g-out">الإقامة</text>
+<line x1="344.7" y1="34" x2="344.7" y2="270" class="g-bday"/>
+<text x="341.7" y="284" text-anchor="end" class="g-note">يبلغ 18</text>
+<line x1="510.5" y1="34" x2="510.5" y2="270" class="g-today"/>
+<text x="507.5" y="284" text-anchor="end" class="g-note g-today-t">اليوم</text>
+</svg>
+    </div>
+    <figcaption>الزمن ماشي من اليمين لليسار، والأرقام فوق هي الأشهر. كل شي بخص التقديم بيخلص قبل امتحانات التوجيهي، فشهر <span class="d">6</span> وشهر <span class="d">7</span> بيضلوا للدراسة. على الموبايل اسحب الجدول يمين ويسار.</figcaption>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--accent)"></i>مهمة رئيسية</span>
+      <span><i class="sw" style="background:var(--accent-soft);border:1px solid var(--accent)"></i>مهمة بالخلفية</span>
+      <span><i class="sw" style="background:var(--gate-soft);border:1px solid var(--gate)"></i>فترة إلزامية</span>
+      <span><i class="sw" style="background:var(--gate);transform:rotate(45deg);width:9px"></i>تاريخ ثابت</span>
+    </div>
+  </figure>
+</section>
+
+<!-- ============ المرحلة 0 ============ -->
+<section id="phase-0" class="phase">
+  <div class="phase-head"><h2>0 · القرار قبل أي مصاريف</h2><span class="when">من اليوم لنص شهر <span class="d">12/2026</span></span></div>
+  <p class="phase-goal">ثلاث أمور بيتغير على أساسها كل شي بعدها: متطلبات التخصص، أجوبة الجامعة مكتوبة، وجواز السفر.</p>
+  <div class="flow">
+
+    <div class="node" data-step="s1" data-title="تثبيت متطلبات تخصص إدارة الأعمال">
+      <div class="dot">1</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">محسوم</span><h3>التخصص: <span class="en">Business Administration</span></h3></div><label class="check"><input type="checkbox" id="c-s1"> تم</label></div>
+        <div class="spec">
+          <div><b>4 سنوات</b>مدة الدراسة</div>
+          <div><b>20,000 يوان</b>رسوم سنوية (أرقام 2026)</div>
+          <div><b>رياضيات فقط</b>مادة <span class="en">CSCA</span></div>
+          <div><b>نجاح بالتوجيهي</b>شرط القبول النهائي</div>
+        </div>
+        <p class="why">الأرقام من دليل الجامعة لسنة 2026، ودليل 2027 ممكن يغيرها. سؤال قبول مسار <span class="en">BTEC</span> موجود بإيميل الجامعة.</p>
+        <div class="doneif"><b>بتخلص لما</b>الجامعة تأكد بالإيميل إن المطلوب رياضيات بس، وتأكد حد أدنى للعلامة إن وجد.</div>
+      </div>
+    </div>
+
+    <div class="node" data-step="s2" data-title="إيميل للجامعة وأخذ الأجوبة مكتوبة">
+      <div class="dot">2</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">لحد <span class="d">30/11</span></span><h3>إيميل للجامعة والأجوبة مكتوبة</h3></div><label class="check"><input type="checkbox" id="c-s2"> تم</label></div>
+        <p>ابعتوا الإيميل الإنجليزي الجاهز بقسم <a href="#templates">الرسائل الجاهزة</a> على <span class="mono">admissions@nbu.edu.cn</span>. فيه 8 أسئلة ما إلها جواب منشور لسنة 2027: آخر موعد، حد علامة <span class="en">CSCA</span>، امتحانات الإنجليزي المقبولة (هل <span class="en">Duolingo</span> مقبول؟)، هل مسار <span class="en">BTEC</span> مقبول، التقديم قبل نتائج التوجيهي، التصديق، الاسترجاع، والعمر.</p>
+        <ul>
+          <li>إذا ما ردوا خلال 10 أيام: ابعتوه مرة ثانية، واتصلوا على الكلية الدولية <span class="mono">+86 574 8760 0335</span> (الصين قبلنا بـ 5 ساعات).</li>
+          <li>احفظوا كل رد كـ <span class="en">PDF</span>. جواب الاسترجاع رح نحتاجه قبل الدفع.</li>
+        </ul>
+        <div class="doneif"><b>بتخلص لما</b>يوصلنا جواب على الأسئلة 1 و 2 و 3 و 4 و 7 على الأقل.</div>
+      </div>
+    </div>
+
+    <div class="node" data-step="s3" data-title="جواز السفر والتجهيزات">
+      <div class="dot">3</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">لنص شهر <span class="d">12</span></span><h3>جواز السفر والتجهيزات</h3></div><label class="check"><input type="checkbox" id="c-s3"> تم</label></div>
+        <ul>
+          <li><b>الجواز:</b> لازم يكون معه جواز قبل التسجيل على <span class="en">CSCA</span>. الأفضل يكون صالح لبعد 2028 (دليل 2026 طلب صلاحية لشهر <span class="d">3</span> السنة اللي بعد الدخول، والفيزا بدها 6 شهور صلاحية وصفحتين فاضيات). ما معه جواز أو بينتهي قبل 2029؟ يطلع جديد هلأ من دائرة الأحوال المدنية والجوازات. لأنه لسا قاصر، لازم يروح معه وليّ أمره (الأب)؛ اسألوا الدائرة عن الأوراق المطلوبة بالضبط.</li>
+          <li><b>اسم واحد بتهجئة وحدة:</b> انسخوا الاسم بالإنجليزي من الجواز حرفياً على <span class="en">CSCA</span> و <span class="en">IELTS</span> والجامعة والفيزا. أي اختلاف بسبب رفض.</li>
+          <li><b>إيميل واحد</b> يضل معه سنين ويفتحه كل يوم. الجامعة بتبعث نموذج الفيزا عليه.</li>
+          <li><b>بطاقة بتدفع أونلاين باليوان</b> (رسوم <span class="en">CSCA</span> و 500 يوان رسوم التقديم)، وصورة شخصية بخلفية بيضاء، ديجيتال ومطبوعة.</li>
+        </ul>
+        <div class="doneif"><b>بتخلص لما</b>الجواز صار بإيده، والإيميل جاهز، والبطاقة انجربت بدفعة صغيرة أونلاين.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ المرحلة 1 ============ -->
+<section id="phase-1" class="phase">
+  <div class="phase-head"><h2>1 · الامتحانات</h2><span class="when">من شهر <span class="d">12/2026</span> لشهر <span class="d">3/2027</span></span></div>
+  <p class="phase-goal"><span class="en">CSCA</span> بشهر <span class="d">1</span> وشهر <span class="d">3</span> للإعادة، <span class="en">IELTS</span> بشهر <span class="d">2</span>. أوراق المدرسة بنفس الوقت.</p>
+  <div class="flow">
+
+    <div class="node" data-step="s4" data-title="التسجيل على امتحان CSCA (دورة شهر 1)">
+      <div class="dot">4</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">شهر <span class="d">12/2026</span></span><h3>التسجيل على <span class="en">CSCA</span>، دورة شهر <span class="d">1</span></h3></div><label class="check"><input type="checkbox" id="c-s4"> تم</label></div>
+        <ul>
+          <li>التسجيل بس من <a href="https://www.csca.cn">csca.cn</a>. التسجيل بيفتح قبل الامتحان بكم أسبوع ولمدة حوالي أسبوع (دورة شهر <span class="d">11</span> كان تسجيلها <span class="d">15–21/10</span>). افتحوا الموقع مرتين بالأسبوع من بداية شهر <span class="d">12</span>.</li>
+          <li>جهّزوا: الجواز، صورة شخصية، بطاقة ائتمان. الرسوم: <span class="mono">450 RMB</span> لمادة وحدة (حوالي 47 دينار).</li>
+          <li>اختاروا مادة <b>الرياضيات</b> بس، ولغة الامتحان <b>الإنجليزي</b>. ما في داعي لمادة الصيني لأنه البرنامج بالإنجليزي.</li>
+          <li>الامتحان أونلاين من البيت مع مراقب مباشر. اقروا شروط الجهاز والغرفة على الموقع وقت التسجيل وجربوها قبل؛ غالباً بدكم كمبيوتر بكاميرا، غرفة هادية، وموبايل ككاميرا ثانية إذا طلبوا.</li>
+          <li>عمره 17 وقت هالدورة. إذا الموقع ما قبل تسجيل اللي تحت 18، يقدم دورة <span class="d">13–14/3</span>.</li>
+        </ul>
+        <div class="doneif"><b>بتخلص لما</b>إيميل تأكيد التسجيل محفوظ.</div>
+      </div>
+    </div>
+
+    <div class="node" data-step="s5" data-title="دراسة وتقديم رياضيات CSCA يوم 23/1">
+      <div class="dot">5</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">السبت <span class="d">23/1/2027</span></span><h3>التحضير وتقديم رياضيات <span class="en">CSCA</span></h3></div><label class="check"><input type="checkbox" id="c-s5"> تم</label></div>
+        <ul>
+          <li>شكل الامتحان: 48 سؤال اختيار من متعدد بـ 60 دقيقة، والعلامة من 100.</li>
+          <li>الوقت بتوقيت الأردن: <b>السبت <span class="d">23/1</span>، 12:00–1:00 الظهر</b> (بكين أبكر بـ 5 ساعات). تأكدوا من الجدول النهائي على الموقع.</li>
+          <li>نزّلوا المنهج الرسمي من قسم <span class="en">Test prep</span> على الموقع، وقارنوه برياضيات الأعمال بـ <span class="en">BTEC</span>؛ المواضيع اللي مش ماخذها لازم يدرسها من الصفر، ومدرس خصوصي لكم حصة ممكن يوفر وقت.</li>
+          <li>كل سؤال بياخذ حوالي 75 ثانية، فالسرعة أهم إشي. يحل أسئلة بالإنجليزي وبتوقيت عشان ما تفاجئه المصطلحات.</li>
+        </ul>
+        <div class="doneif"><b>بتخلص لما</b>قدّم الامتحان. النتيجة بتطلع خلال حوالي 7 أيام عمل.</div>
+      </div>
+    </div>
+
+    <div class="node gate" data-step="s6" data-title="هل علامة CSCA كافية؟">
+      <div class="dot"><span>6</span></div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">أول شهر <span class="d">2</span></span><h3>علامة <span class="en">CSCA</span> كافية؟</h3></div><label class="check"><input type="checkbox" id="c-s6"> تم</label></div>
+        <p>قارنوها بالحد الأدنى اللي بعثته الجامعة (الخطوة 2). إذا الجامعة ما حطت حد أدنى، قارنوها بعلاماته بالتدريب: إذا طلعت أضعف بوضوح، بتستاهل إعادة وشهر <span class="d">3</span> لسا فاضي.</p>
+        <div class="branches">
+          <div class="br yes"><b>نعم</b>احفظوا تقرير العلامة <span class="en">PDF</span> وكمّلوا على <span class="en">IELTS</span> (الخطوة 7).</div>
+          <div class="br no"><b>لا</b>سجلوا دورة <b><span class="d">13–14/3</span></b>. احتياط أخير: <b><span class="d">24–25/4</span></b>، لسا قبل أغلب المواعيد بس بدون أي هامش.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="node" data-step="s7" data-title="حجز وتقديم IELTS Academic">
+      <div class="dot">7</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">احجز بشهر <span class="d">12</span> · قدّم أول–نص شهر <span class="d">2</span></span><h3><span class="en">IELTS Academic</span></h3></div><label class="check"><input type="checkbox" id="c-s7"> تم</label></div>
+        <ul>
+          <li>المجلس الثقافي البريطاني بعمّان (شارع الرينبو) أو المراكز التابعة له. من شهر <span class="d">2/2026</span> كل امتحانات <span class="en">IELTS</span> بالأردن على الكمبيوتر: <span class="mono">220 JOD</span>. وفيه <span class="en">IELTS Academic Online</span> من البيت: <span class="mono">215 JOD</span>. الحجز من britishcouncil.jo.</li>
+          <li>لازم يكون <b><span class="en">Academic</span></b> مش <span class="en">General Training</span>.</li>
+          <li>الهدف <b>6.0</b>. المصادر بتحط حد الجامعة بين 5.5 و 6.0، وصفحات المنح بتذكر 6.0، فـ 6.0 هو الرقم الآمن.</li>
+          <li>يقدمه بعد <span class="en">CSCA</span> عشان ما يتضاربوا. يخطط لـ 4–6 أسابيع امتحانات تجريبية بتوقيت؛ الكتابة (<span class="en">Writing</span>) غالباً أكثر جزء بده شغل. الإنجليزي المتقدم بمسار <span class="en">BTEC</span> بيساعده.</li>
+          <li><span class="en">Duolingo English Test</span> (أرخص ونتيجته بيومين) بس إذا الجامعة أكدت كتابياً إنها بتقبله.</li>
+        </ul>
+        <div class="doneif"><b>بتخلص لما</b>نزّل تقرير النتيجة (<span class="en">Test Report Form</span>).</div>
+      </div>
+    </div>
+
+    <div class="node gate" data-step="s8" data-title="هل علامة IELTS 6.0 أو أعلى؟">
+      <div class="dot"><span>8</span></div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">شهر <span class="d">2</span></span><h3><span class="en">IELTS</span> 6.0 أو أعلى؟</h3></div><label class="check"><input type="checkbox" id="c-s8"> تم</label></div>
+        <div class="branches">
+          <div class="br yes"><b>نعم</b>كمّل.</div>
+          <div class="br no"><b>لا</b>يحجز مرة ثانية بشهر <span class="d">3</span> بعد عيد ميلاده. ممكن 5.5 تكفي إذا رد الجامعة قال هيك؛ تأكدوا قبل ما تدفعوا مرة ثانية.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="node" data-step="s9" data-title="أوراق المدرسة والترجمات">
+      <div class="dot">9</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">شهر <span class="d">1</span> ← شهر <span class="d">2</span>، بالتوازي</span><h3>أوراق المدرسة والترجمات</h3></div><label class="check"><input type="checkbox" id="c-s9"> تم</label></div>
+        <ul>
+          <li><b>كتاب "متوقع تخرجه"</b> من المدرسة، بالإنجليزي إذا بيقدروا، على ورق رسمي ومختوم: طالب منتظم بالصف 12، مسار <span class="en">BTEC</span> أعمال، ومتوقع يقدم امتحان الثانوية العامة صيف 2027. الجامعة بتقبل شهادة "قبل التخرج" وقت التقديم بشرط تجيب الشهادة الأصلية وقت التسجيل.</li>
+          <li><b>كشوف العلامات</b> للصفين 10 و 11، و<b>نتائج توجيهي الصف 11</b> إذا قدمها (التوجيهي صار على سنتين وامتحانات الصف 11 بلشت <span class="d">23/7/2026</span>).</li>
+          <li>ترجمة معتمدة للإنجليزي من مكتب ترجمة قانونية لأي ورقة بالعربي.</li>
+          <li>اسألوا الجامعة (الخطوة 2) إذا بيكفي سكان هلأ. إذا طلبوا تصديق، الطريق بالأردن: وزارة التربية ← وزارة الخارجية ← القسم القنصلي بالسفارة الصينية.</li>
+        </ul>
+        <div class="doneif"><b>بتخلص لما</b>كل ورقة مسحوبة سكان ملون وواضح، كل وحدة بملف <span class="en">PDF</span> لحالها.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ المرحلة 2 ============ -->
+<section id="phase-2" class="phase">
+  <div class="phase-head"><h2>2 · بيكمّل 18 وبيقدّم</h2><span class="when">شهر <span class="d">3</span> لنص شهر <span class="d">4/2027</span></span></div>
+  <p class="phase-goal">ورقتين الأفضل يطلعوا بعد عيد ميلاده، وبعدها التقديم. إذا دليل 2027 حط موعد أبكر، قدموا باللي جاهز وكمّلوا الباقي بعدين.</p>
+  <div class="flow">
+
+    <div class="node" data-step="s10" data-title="شهادة عدم محكومية">
+      <div class="dot">10</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">بعد عيد ميلاده الـ 18 مباشرة</span><h3>شهادة عدم محكومية</h3></div><label class="check"><input type="checkbox" id="c-s10"> تم</label></div>
+        <ul>
+          <li>من وزارة العدل (خدماتها الإلكترونية أو تطبيق سند).</li>
+          <li>إذا في نسخة إنجليزي خذوها، وإلا ترجمة معتمدة. دليل الجامعة 2026 بيطلبها ضمن الأوراق.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="node" data-step="s11" data-title="نموذج الفحص الطبي للأجانب">
+      <div class="dot">11</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date"><span class="d">20–31/3</span></span><h3>نموذج الفحص الطبي <span class="en">(Foreigner Physical Examination Form)</span></h3></div><label class="check"><input type="checkbox" id="c-s11"> تم</label></div>
+        <ul>
+          <li>نزّلوا النموذج الصيني من موقع الجامعة أو السفارة. الفحص بمستشفى حكومي: فحص عام، تحاليل دم (<span class="en">HIV</span>، الزهري، التهاب الكبد)، صورة صدر، تخطيط قلب.</li>
+          <li>توقيع الدكتور، ختم المستشفى، وختم فوق صورته. ارفقوا نتائج المختبر.</li>
+          <li><b>ليش آخر شهر <span class="d">3</span>:</b> النموذج صالح 6 شهور. إذا انعمل <span class="d">25/3</span>، بيضل صالح للفيزا آخر شهر <span class="d">7</span> وللفحص بنينغبو أول شهر <span class="d">9</span>.</li>
+          <li>الأصل ينحفظ منيح. سكان منه للتقديم.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="node" data-step="s12" data-title="تقديم الطلب على موقع الجامعة">
+      <div class="dot">12</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">الهدف: قبل <span class="d">15/4</span></span><h3>تقديم الطلب للجامعة</h3></div><label class="check"><input type="checkbox" id="c-s12"> تم</label></div>
+        <ul>
+          <li>ابدأوا من صفحة القبول بالكلية الدولية <a href="https://icnbu.nbu.edu.cn/Admissions.htm">icnbu.nbu.edu.cn</a>، وفيها رابط نظام التقديم. اعملوا الحساب بالإيميل الدائم.</li>
+          <li>ادفعوا رسوم التقديم <span class="mono">500 RMB</span> (حوالي 53 دينار، ما بترجع).</li>
+          <li>ارفعوا: صفحة الجواز، الصورة، كتاب متوقع تخرجه، كشوف العلامات ونتائج توجيهي الصف 11، تقرير <span class="en">CSCA</span>، تقرير <span class="en">IELTS</span>، عدم المحكومية، الفحص الطبي، وأي إشي زيادة بدليل 2027.</li>
+          <li>اطلبوا سكن جامعي بأبكر وقت بتسمح فيه الجامعة. الغرف محدودة وبدها طلب مسبق.</li>
+        </ul>
+        <p class="why">دليل 2026 ما حط موعد إغلاق؛ جامعة <span class="en">Ningbo University of Technology</span> سكّرت تقديم 2026 يوم <span class="d">30/6</span>. نص شهر <span class="d">4</span> بيعطينا مجال للمقابلة والإعادة والفيزا.</p>
+        <div class="doneif"><b>بتخلص لما</b>الحالة بتقول تم التقديم والرسوم مدفوعة. خذوا سكرين شوت للاثنين.</div>
+      </div>
+    </div>
+
+    <div class="node" data-step="s13" data-title="التقديم على منحة">
+      <div class="dot">13</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">بنفس الأسبوع</span><h3>منحة، بتساوي سنة ببلاش</h3></div><label class="check"><input type="checkbox" id="c-s13"> تم</label></div>
+        <p>لسنة 2026–27 الجامعة عرضت منح حكومة <span class="en">Zhejiang</span>، حكومة <span class="en">Ningbo</span>، ومنحة الجامعة لطلاب البكالوريوس، كل وحدة 20,000 يوان لسنة وحدة، وما بتقدر تاخذ أكثر من وحدة. قدّموا على نفس النظام إذا دليل منح 2027 فاتح، وانتبهوا لموعده: المنح غالباً بتسكّر قبل القبول.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ المرحلة 3 ============ -->
+<section id="phase-3" class="phase">
+  <div class="phase-head"><h2>3 · القبول والدفع</h2><span class="when">شهر <span class="d">4</span> لشهر <span class="d">7/2027</span></span></div>
+  <p class="phase-goal">الجامعة بتقرر، وما بندفع إلا لما يكون معنا جواب الاسترجاع مكتوب، وبعدها أوراق الفيزا بتوصل بالإيميل.</p>
+  <div class="flow">
+
+    <div class="node" data-step="s14" data-title="المراجعة والمقابلة">
+      <div class="dot">14</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">شهر <span class="d">4</span> ← شهر <span class="d">5</span></span><h3>المراجعة، وممكن مقابلة</h3></div><label class="check"><input type="checkbox" id="c-s14"> تم</label></div>
+        <ul>
+          <li>الترتيب: تدقيق الأوراق بالكلية الدولية ← مراجعة الكلية المختصة ← بعض البرامج بتعمل مقابلة أونلاين وبيبلغوا عنها قبل.</li>
+          <li>يجهز تعريف عن حاله بالإنجليزي مدته دقيقتين: مين هو، ليش الصين، ليش <span class="en">NBU</span>، ليش إدارة الأعمال، وشو خطته بعد التخرج. خبرته بمسار <span class="en">BTEC</span> أعمال نقطة قوية يحكي عنها. يتمرن عليه مرة بتصوير فيديو.</li>
+          <li>يفتح الإيميل وحالة الطلب كل يومين. طلب ورقة ناقصة بيتجاهل أسبوع ممكن يضيّع الطلب.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="node gate" data-step="s15" data-title="وصل القبول المبدئي؟">
+      <div class="dot"><span>15</span></div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">شهر <span class="d">5</span> ← شهر <span class="d">6</span></span><h3>وصل القبول المبدئي (<span class="en">Pre-Admission Notice</span>)؟</h3></div><label class="check"><input type="checkbox" id="c-s15"> تم</label></div>
+        <div class="branches">
+          <div class="br yes"><b>نعم</b>اقروا آخر موعد للدفع على الإشعار. روحوا للخطوة 17.</div>
+          <div class="br no"><b>لا / رفض</b>نفس علامات <span class="en">CSCA</span> و <span class="en">IELTS</span> بتنفع بجامعات المنح الحكومية الصينية الثانية، وكثير منها مفتوح لشهر <span class="d">6–7</span>. خلي عندكم جامعة أو ثنتين احتياط من شهر <span class="d">4</span> عشان التغيير يصير بنفس الأسبوع.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="node gate" data-step="s16" data-title="دفع رسوم أول سنة">
+      <div class="dot"><span>16</span></div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">قبل الموعد المكتوب على الإشعار</span><h3>ندفع رسوم أول سنة؟</h3></div><label class="check"><input type="checkbox" id="c-s16"> تم</label></div>
+        <p>ادفعوا بس إذا سياسة الاسترجاع موجودة بإيميل محفوظ من الجامعة.</p>
+        <ul>
+          <li>المبلغ: <span class="mono">20,000 RMB</span> (أسعار 2026)، حوالي 2,100 دينار. بيندفع من نظام الجامعة.</li>
+          <li>ابعتوه قبل الموعد بكم يوم؛ الحوالة البنكية ممكن تاخذ 2–4 أيام عمل. احفظوا الوصل.</li>
+        </ul>
+        <div class="branches">
+          <div class="br yes"><b>الجواب موجود</b>ادفعوا. روحوا للخطوة 18.</div>
+          <div class="br no"><b>ما في جواب</b>ابعتوا للجامعة اطلبوا الجواب قبل الموعد، واطلبوا تمديد قصير إذا لزم. ما في دفع على العمياني.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="node" data-step="s17" data-title="تنزيل إشعار القبول ونموذج JW202">
+      <div class="dot">17</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">شهر <span class="d">6</span> ← شهر <span class="d">7</span></span><h3>إشعار القبول ونموذج الفيزا</h3></div><label class="check"><input type="checkbox" id="c-s17"> تم</label></div>
+        <ul>
+          <li>نزّلوا <b><span class="en">Admission Notice</span></b> (إشعار القبول النهائي) من النظام.</li>
+          <li><b><span class="en">Confirmation Form for Study in China</span></b> (هو نموذج <span class="en">JW202</span>) بيوصل إلكترونياً على إيميل التقديم. دوروا بالـ <span class="en">spam</span> كمان.</li>
+          <li>اطبعوا الاثنين ملون، نسختين من كل واحد. طابقوا كل حرف من الاسم ورقم الجواز مع الجواز.</li>
+          <li>انتبهوا لـ <b>مواعيد التسجيل</b> المكتوبة على الإشعار. على أساسها بنحجز الطيارة.</li>
+        </ul>
+        <div class="doneif"><b>بتخلص لما</b>الملفين محفوظين بمكانين ومطبوعين.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ المرحلة 4 ============ -->
+<section id="phase-4" class="phase">
+  <div class="phase-head"><h2>4 · التوجيهي، الفيزا، الأوراق</h2><span class="when">شهر <span class="d">6</span> لشهر <span class="d">8/2027</span></span></div>
+  <p class="phase-goal">التوجيهي أولاً. الفيزا بتنعمل بعد آخر امتحان مباشرة، فبيضل بس النتائج لشهر <span class="d">8</span>.</p>
+  <div class="flow">
+
+    <div class="node" data-step="s18" data-title="امتحانات التوجيهي">
+      <div class="dot">18</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">شهر <span class="d">6</span> ← شهر <span class="d">7</span></span><h3>امتحانات التوجيهي</h3></div><label class="check"><input type="checkbox" id="c-s18"> تم</label></div>
+        <p>ما حطينا أي إشي ثاني هون عن قصد. إذا الجامعة طلبت إشي وقت الامتحانات، الرد بنفس اليوم؛ بياخذ عشر دقايق.</p>
+      </div>
+    </div>
+
+    <div class="node" data-step="s19" data-title="طلب فيزا الدراسة X1">
+      <div class="dot">19</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">آخر شهر <span class="d">7</span></span><h3>فيزا الدراسة <span class="en">X1</span></h3></div><label class="check"><input type="checkbox" id="c-s19"> تم</label></div>
+        <ol>
+          <li>عبّوا الطلب أونلاين على <a href="https://cova.mfa.gov.cn">cova.mfa.gov.cn</a>، نوع الفيزا <span class="en">X1</span>، اطبعوه ووقّعوه.</li>
+          <li>روحوا على القسم القنصلي بالسفارة الصينية بعمّان بدون موعد (بدون مواعيد من شهر <span class="d">11/2023</span>)، الأحد للخميس الصبح. روحوا بدري لأنه بالموسم في زحمة.</li>
+          <li>خذوا معكم: الجواز (صالح 6 شهور وأكثر وفيه صفحتين فاضيات) وصورة صفحة البيانات · طلب <span class="en">COVA</span> موقّع · صورة شخصية · <span class="en">Admission Notice</span> أصل وصورة · <span class="en">Confirmation Form (JW202)</span> أصل وصورة · الفحص الطبي أصل وصورة.</li>
+          <li>الرسوم للأردنيين: <span class="mono">26 JD</span> لدخول واحد بالسعر المخفض، والتخفيض لحد 31/12/2026، فتوقعوا رقم مختلف؛ و <span class="mono">+18 JD</span> للمستعجل.</li>
+          <li>استلموا بالتاريخ المكتوب على الوصل. تأكدوا إنها <b><span class="en">X1</span></b> والاسم مطابق.</li>
+        </ol>
+        <p class="why">فيزا <span class="en">X1</span> بتخليه يدخل ويقعد 30 يوم. بعدها الإقامة بتحل محلها (الخطوة 25).</p>
+      </div>
+    </div>
+
+    <div class="node gate" data-step="s20" data-title="نتائج التوجيهي: نجح وبالمعدل المطلوب؟">
+      <div class="dot"><span>20</span></div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">متوقعة بالنص الأول من شهر <span class="d">8</span></span><h3>نجح بالتوجيهي؟</h3></div><label class="check"><input type="checkbox" id="c-s20"> تم</label></div>
+        <p class="why">نتائج 2026 طلعت بالنص الأول من شهر <span class="d">8</span>. الجامعة بدها شهادة النجاح الأصلية وقت التسجيل.</p>
+        <div class="branches">
+          <div class="br yes"><b>نعم</b>روحوا للخطوة 22 بنفس اليوم.</div>
+          <div class="br no"><b>لا</b>ابعتوا للجامعة فوراً: اطلبوا تأجيل لشهر <span class="d">9/2028</span> واسألوا شو بصير بالرسوم المدفوعة. اسألوا وزارة التربية عن الدورة التكميلية الجاية. ما في سفر.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="node" data-step="s21" data-title="تصديق شهادة التوجيهي">
+      <div class="dot">21</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">شهر <span class="d">8</span>، أسبوع لأسبوعين</span><h3>الشهادة النهائية مصدقة</h3></div><label class="check"><input type="checkbox" id="c-s21"> تم</label></div>
+        <ul>
+          <li>طلّعوا شهادة الثانوية العامة الرسمية من وزارة التربية والتعليم.</li>
+          <li>التصديق: وزارة التربية ← وزارة الخارجية ← القسم القنصلي بالسفارة الصينية، إذا الجامعة طلبت. الأردن مش بالأبوستيل، فهاي السلسلة بدالها.</li>
+          <li>ترجمة معتمدة للإنجليزي. الأصل والنسخة المصدقة والترجمة بشنطة اليد.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="node" data-step="s22" data-title="حجز الطيارة وتجهيز المصاري">
+      <div class="dot">22</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">بعد الفيزا والنتائج</span><h3>الطيارة، المصاري، الموبايل</h3></div><label class="check"><input type="checkbox" id="c-s22"> تم</label></div>
+        <ul>
+          <li>لازم يوصل ضمن مواعيد التسجيل على إشعار القبول. الطريق المعتاد: عمّان ← شنغهاي <span class="en">Pudong</span> أو <span class="en">Hangzhou</span> بترانزيت واحد، بعدين قطار سريع لنينغبو.</li>
+          <li>المصاري: بطاقة بتشتغل برا، شوية كاش يوان أو دولار، و <span class="en">Alipay</span> مربوط بالبطاقة قبل السفر. الأرقام بجدول <a href="#money">التكاليف</a>.</li>
+          <li>خدمة العلم: القرعة لمواليد 2009 متوقعة حوالي آخر 2027. إذا طلع اسمه وهو بالصين، بينقدم طلب تأجيل على منصة خدمة العلم (khidmetalam.gov.jo) مع إثبات الدراسة والإقامة؛ حدا من العيلة يتابع المنصة عنه.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ المرحلة 5 ============ -->
+<section id="phase-5" class="phase">
+  <div class="phase-head"><h2>5 · الوصول لنينغبو</h2><span class="when">شهر <span class="d">9/2027</span> · عدّاد الـ 30 يوم بيبلش من الوصول</span></div>
+  <p class="phase-goal">ثلاث تسجيلات، وموعد واحد ما بيتأخر.</p>
+  <div class="flow">
+
+    <div class="node" data-step="s23" data-title="التسجيل بالكلية الدولية">
+      <div class="dot">23</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">أيام التسجيل</span><h3>التسجيل بالجامعة</h3></div><label class="check"><input type="checkbox" id="c-s23"> تم</label></div>
+        <p>يجيب الأصول: الجواز مع فيزا <span class="en">X1</span>، <span class="en">Admission Notice</span>، <span class="en">Confirmation Form (JW202)</span>، الفحص الطبي، شهادة التوجيهي مع النسخة المصدقة والترجمة، وصل الرسوم، و 8 صور شخصية.</p>
+      </div>
+    </div>
+
+    <div class="node" data-step="s24" data-title="الفحص الصحي، التأمين، تسجيل السكن">
+      <div class="dot">24</div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">أول أسبوع</span><h3>الفحص الصحي، التأمين، تسجيل السكن عند الشرطة</h3></div><label class="check"><input type="checkbox" id="c-s24"> تم</label></div>
+        <ul>
+          <li>تدقيق الفحص الصحي بمركز <span class="en">Ningbo International Travel Healthcare Center</span>، حوالي <span class="mono">500 RMB</span>. الكلية الدولية بتبلغ الطلاب الجدد بالموعد والطريقة.</li>
+          <li>تأمين الطلاب <span class="mono">1,200 RMB</span> بالسنة.</li>
+          <li>تسجيل السكن عند الشرطة خلال 24 ساعة من الوصول لأي عنوان. السكن الجامعي عادة بيعملها؛ إذا ساكن برا لازم يعملها بنفسه.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="node gate" data-step="s25" data-title="الإقامة خلال 30 يوم">
+      <div class="dot"><span>25</span></div>
+      <div class="card">
+        <div class="card-top"><div><span class="date">قبل اليوم الـ 30 من الدخول</span><h3>انقدم طلب الإقامة بالوقت؟</h3></div><label class="check"><input type="checkbox" id="c-s25"> تم</label></div>
+        <p>اللي معه فيزا <span class="en">X1</span> لازم يقدم على إقامة بدائرة الهجرة المحلية خلال 30 يوم من الدخول. الكلية الدولية بالجامعة بترتبها مع دائرة الهجرة بنينغبو؛ الرسوم <span class="mono">800 RMB</span> بالسنة. الجواز غالباً بيضل عندهم كم يوم.</p>
+        <div class="branches">
+          <div class="br yes"><b>نعم</b>الإقامة بالجواز. خلصت الانتقالة.</div>
+          <div class="br no"><b>لسا لليوم 20</b>يروح على مكتب الكلية الدولية بنفس اليوم. اليوم 31 يعني مخالفة إقامة.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ التكاليف ============ -->
+<section id="money" class="phase">
+  <h2>التكاليف</h2>
+  <p class="muted small">أرقام اليوان من دليل الجامعة 2026؛ الدينار على أساس حوالي 9.5 يوان للدينار (نص شهر <span class="d">11/2026</span>). اللي عليه ≈ تقديري.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>البند</th><th>متى</th><th>يوان (RMB)</th><th>≈ دينار</th></tr></thead>
+    <tbody>
+      <tr><td><span class="en">CSCA</span> (رياضيات فقط)</td><td>شهر <span class="d">12–1</span></td><td class="num">450</td><td class="num">47</td></tr>
+      <tr><td><span class="en">IELTS Academic</span> على الكمبيوتر، عمّان</td><td>شهر <span class="d">2</span></td><td class="num">–</td><td class="num">220</td></tr>
+      <tr><td>رسوم التقديم للجامعة</td><td>شهر <span class="d">4</span></td><td class="num">500</td><td class="num">53</td></tr>
+      <tr><td>ترجمات، تصديقات، فحوصات طبية، جواز</td><td>شهر <span class="d">1–8</span></td><td class="num">–</td><td class="num">≈ 100–250</td></tr>
+      <tr><td>فيزا <span class="en">X1</span> (التخفيض لحد 31/12/2026)</td><td>شهر <span class="d">7</span></td><td class="num">–</td><td class="num">26 (+18)</td></tr>
+      <tr><td><b>رسوم أول سنة</b></td><td>شهر <span class="d">5–6</span></td><td class="num">20,000</td><td class="num">2,100</td></tr>
+      <tr><td>السكن: <span class="en">Yongjiang</span> مزدوج / <span class="en">Sunshine</span> مزدوج / <span class="en">Sunshine</span> مفرد</td><td>شهر <span class="d">9</span></td><td class="num">4,000/yr · 900/mo · 1,200/mo</td><td class="num">420/yr · 95/mo · 126/mo</td></tr>
+      <tr><td>التأمين</td><td>شهر <span class="d">9</span></td><td class="num">1,200</td><td class="num">126</td></tr>
+      <tr><td>الإقامة</td><td>شهر <span class="d">9</span></td><td class="num">800</td><td class="num">84</td></tr>
+      <tr><td>الفحص الصحي بنينغبو</td><td>شهر <span class="d">9</span></td><td class="num">≈ 500</td><td class="num">53</td></tr>
+      <tr><td>الأكل (المصادر بتقول 1,000–1,500 بالشهر)</td><td>شهرياً</td><td class="num">≈ 1,250/mo</td><td class="num">≈ 130/mo</td></tr>
+      <tr><td>الطيارة عمّان ← شنغهاي/هانغجو</td><td>شهر <span class="d">8</span></td><td class="num">–</td><td>حسب الأسعار</td></tr>
+    </tbody>
+    <tfoot><tr><td colspan="2">أول سنة بالصين، أرخص سكن، 10 شهور أكل</td><td class="num">≈ 39,000</td><td class="num">≈ 4,100</td></tr></tfoot>
+  </table></div>
+  <p class="small muted" style="margin-top:8px">ومعها موبايل، مواصلات، أغطية وكتب. منحة الـ 20,000 يوان (الخطوة 13) بتغطي الرسوم كاملة.</p>
+</section>
+
+<!-- ============ الأوراق ============ -->
+<section id="documents" class="phase">
+  <h2>قائمة الأوراق كاملة</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>الورقة</th><th>من وين</th><th>متى</th><th>لشو</th></tr></thead>
+    <tbody>
+      <tr><td>جواز سفر صالح لبعد 2028</td><td>الأحوال المدنية والجوازات</td><td>هلأ</td><td><span class="en">CSCA</span>، <span class="en">IELTS</span>، الجامعة، الفيزا</td></tr>
+      <tr><td>تقرير علامة <span class="en">CSCA</span></td><td>csca.cn</td><td>شهر <span class="d">2</span> (أو شهر <span class="d">3</span>)</td><td>التقديم</td></tr>
+      <tr><td><span class="en">IELTS Test Report Form</span></td><td>المجلس الثقافي البريطاني</td><td>شهر <span class="d">2–3</span></td><td>التقديم</td></tr>
+      <tr><td>كتاب "متوقع تخرجه" (<span class="en">BTEC</span> أعمال)</td><td>المدرسة</td><td>شهر <span class="d">2</span></td><td>التقديم</td></tr>
+      <tr><td>كشوف الصف 10–11 ونتائج توجيهي الصف 11 مع الترجمة</td><td>المدرسة، وزارة التربية</td><td>شهر <span class="d">2</span></td><td>التقديم</td></tr>
+      <tr><td>شهادة عدم محكومية</td><td>وزارة العدل</td><td>بعد ما يكمّل 18</td><td>التقديم</td></tr>
+      <tr><td><span class="en">Foreigner Physical Examination Form</span> (الأصل)</td><td>مستشفى حكومي</td><td><span class="d">20–31/3</span></td><td>التقديم، الفيزا، فحص نينغبو</td></tr>
+      <tr><td>صور شخصية خلفية بيضاء</td><td>استوديو</td><td>شهر <span class="d">2</span></td><td>كل إشي؛ خلي معه 8</td></tr>
+      <tr><td>أجوبة الجامعة المكتوبة</td><td>الإيميل</td><td>شهر <span class="d">11–12</span></td><td>قرار الدفع</td></tr>
+      <tr><td>وصل دفع الرسوم</td><td>نظام الجامعة</td><td>شهر <span class="d">5–6</span></td><td>التسجيل، أي استرجاع</td></tr>
+      <tr><td><span class="en">Admission Notice</span> + <span class="en">Confirmation Form (JW202)</span></td><td>نظام الجامعة / الإيميل</td><td>شهر <span class="d">6–7</span></td><td>الفيزا، التسجيل</td></tr>
+      <tr><td>طلب فيزا <span class="en">COVA</span> موقّع</td><td>cova.mfa.gov.cn</td><td>آخر شهر <span class="d">7</span></td><td>الفيزا</td></tr>
+      <tr><td>شهادة التوجيهي مصدقة ومترجمة</td><td>التربية ← الخارجية ← السفارة الصينية</td><td>شهر <span class="d">8</span></td><td>التسجيل</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============ الرسائل ============ -->
+<section id="templates" class="phase">
+  <h2>الرسائل الجاهزة</h2>
+  <p class="small muted">الإيميل بالإنجليزي وجاهز للإرسال؛ بس عبّوا الاسم ورقم التواصل بآخره.</p>
+  <div class="tpl">
+    <div class="tpl-head"><h3>إيميل للجامعة (الخطوة 2)</h3><button class="copy" type="button" data-copy="tpl-nbu" id="btn-nbu">نسخ</button></div>
+    <pre id="tpl-nbu" dir="ltr" lang="en">To: admissions@nbu.edu.cn
+Subject: September 2027 Business Administration application – questions from a Jordanian applicant
+
+Dear Admissions Office, International College, Ningbo University,
+
+I plan to apply as a self-funded student for the English-taught Bachelor's program in Business Administration for September 2027. I am a Jordanian citizen in my final year of high school, in the Business (BTEC) track of the Jordanian General Secondary Education Certificate (Tawjihi). I sit the final exams in summer 2027, and results are published in mid-August 2027. Could you please confirm:
+
+1. When does the 2027 bachelor's application open, and what is the deadline?
+2. Is CSCA Mathematics the only CSCA subject required for Business Administration, and is there a minimum score?
+3. Which English tests do you accept (IELTS Academic, TOEFL, Duolingo English Test?) and what minimum score?
+4. Is the Business (BTEC) track of the Jordanian General Secondary Education Certificate accepted as a high school qualification for this program?
+5. May I apply with an expected-graduation letter from my school, my Grade 10–11 transcripts and my Grade 11 Tawjihi results, and submit the final certificate at registration?
+6. Do application documents need to be notarized or legalized, or are scans of the originals enough? What must be legalized for registration?
+7. If I pay the first-year tuition and then my visa is refused or I cannot enroll, what is the refund policy?
+8. I turn 18 in March 2027. Is there a minimum age for applying or enrolling?
+
+Thank you for your help.
+
+[Full name exactly as in passport]
+[Email] · [WhatsApp number]</pre>
+  </div>
+</section>
+
+<!-- ============ المصادر ============ -->
+<section id="sources" class="phase">
+  <h2>المصادر</h2>
+  <p class="small muted">موقع الجامعة نفسه ما فتح وقت البحث، فأرقام الجامعة مأخوذة من نسخ وكالات لدليلها لسنة 2026. الإيميل بالخطوة 2 هو اللي بيأكدها لسنة 2027.</p>
+  <ul class="src">
+    <li>ملخص دليل الجامعة 2026 (<span class="en">CSCA</span>، الأوراق، الرسوم): <a href="https://olachina.org/ningbo-university">olachina.org</a></li>
+    <li>تفاصيل دليل الجامعة (شهادة قبل التخرج، دفع الرسوم مسبقاً، السكن، أرقام التواصل): <a href="https://wentchina.com/ningbo-university-admission-for-international-students/">wentchina.com</a></li>
+    <li>دليل الجامعة 2026 بالصيني (<span class="en">CSCA</span> إجباري، الرسوم): <a href="https://china.elic.com.cn/2026/06/10/2026%E5%B9%B4%E5%AE%81%E6%B3%A2%E5%A4%A7%E5%AD%A6%E5%9B%BD%E9%99%85%E5%AD%A6%E7%94%9F%E6%9C%AC%E7%A1%95%E5%8D%9A%E6%8B%9B%E7%94%9F%E7%AE%80%E7%AB%A0/">china.elic.com.cn</a></li>
+    <li>مواعيد <span class="en">CSCA</span> 2026–27 وأوقات المواد: <a href="https://csca.help/calendar">csca.help</a>، <a href="https://cscaprep.academy/exam-dates">cscaprep.academy</a>؛ الموقع الرسمي <a href="https://www.csca.cn">csca.cn</a></li>
+    <li>شكل <span class="en">CSCA</span> وموادها ورسومها: <a href="https://english.shanghai.gov.cn/en-Individuals-Education-CSCA/20260813/9565875c1c214744971b07e9236da16f.html">دليل حكومة شنغهاي</a></li>
+    <li>مواد مسار الأعمال في <span class="en">BTEC</span> والتوجيهي على سنتين: <a href="https://en.wikipedia.org/wiki/Tawjihi">Wikipedia: Tawjihi</a></li>
+    <li>رسوم <span class="en">IELTS</span> بالأردن: <a href="https://www.britishcouncil.jo/en/exam/ielts/book-test">British Council Jordan</a></li>
+    <li>الفيزا بدون موعد بالسفارة الصينية بعمّان: <a href="http://jo.china-embassy.gov.cn/eng/lsyw/202311/t20231107_11175419.htm">إعلان السفارة</a>؛ الرسوم: <a href="https://jo.china-embassy.gov.cn/eng/lsyw/202512/t20251231_11794851.htm">إعلان الرسوم</a></li>
+    <li>الإقامة خلال 30 يوم لحاملي <span class="en">X1</span>: <a href="https://regional.chinadaily.com.cn/guangxi/2018-08/21/c_265094_2.htm">China Daily (نص السفارة)</a></li>
+    <li>امتحانات الصف 11 من <span class="d">23/7/2026</span> وموعد النتائج: <a href="https://www.almamlakatv.com/news/198458-">المملكة</a>، <a href="https://www.almamlakatv.com/news/204959-">المملكة</a></li>
+    <li>الأردن مش عضو بالأبوستيل: <a href="https://amman.mfa.gov.hu/eng/page/legalisation">السفارة الهنغارية بعمّان</a></li>
+    <li>قرعة خدمة العلم 2027 والتأجيل للمقيمين برا: <a href="https://www.addustour.com/articles/1602655">الدستور</a>، <a href="https://husna.fm/%D9%85%D8%AD%D9%84%D9%8A/%D8%AA%D8%A3%D8%AC%D9%8A%D9%84-%D8%AE%D8%AF%D9%85%D8%A9-%D8%A7%D9%84%D8%B9%D9%84%D9%85-%D8%B7%D9%84%D8%A8%D8%A9-%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC">حسنى</a></li>
+    <li>سعر الصرف: <a href="https://currencyconvert.online/jod/cny">currencyconvert.online</a></li>
+  </ul>
+</section>
+
+<footer>القوانين والرسوم بتتغير؛ أي إشي بتحكيه الجامعة أو السفارة مباشرة أهم من هالصفحة.</footer>
+</div>
+
+<script>
+(function(){
+  var KEY='nbu-path-2027-ar';
+  var state={};
+  try{ state=JSON.parse(localStorage.getItem(KEY)||'{}')||{}; }catch(e){ state={}; }
+  var nodes=[].slice.call(document.querySelectorAll('.node[data-step]'));
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+  function render(){
+    var done=0, next=null;
+    nodes.forEach(function(n){
+      var id=n.getAttribute('data-step');
+      var on=!!state[id];
+      n.classList.toggle('done', on);
+      var box=n.querySelector('input[type=checkbox]');
+      if(box) box.checked=on;
+      if(on) done++; else if(!next) next=n;
+    });
+    document.getElementById('pcount').textContent=done+' من '+nodes.length+' خطوة';
+    document.getElementById('pbar').style.width=(nodes.length?Math.round(done/nodes.length*100):0)+'%';
+    document.getElementById('pnext').textContent= next ? ('التالي: خطوة '+next.getAttribute('data-step').slice(1)+' · '+next.getAttribute('data-title')) : 'كل الخطوات خلصت. صار بنينغبو.';
+  }
+  nodes.forEach(function(n){
+    var box=n.querySelector('input[type=checkbox]');
+    if(!box) return;
+    box.addEventListener('change', function(){ state[n.getAttribute('data-step')]=box.checked; save(); render(); });
+  });
+  [].slice.call(document.querySelectorAll('button.copy')).forEach(function(b){
+    b.addEventListener('click', function(){
+      var t=document.getElementById(b.getAttribute('data-copy')).textContent;
+      var done=function(){ b.textContent='تم النسخ'; setTimeout(function(){ b.textContent='نسخ'; },1600); };
+      try{
+        navigator.clipboard.writeText(t).then(done, function(){ fallback(t); done(); });
+      }catch(e){ fallback(t); done(); }
+    });
+  });
+  function fallback(t){
+    var ta=document.createElement('textarea'); ta.value=t; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta);
+  }
+  render();
+})();
+</script>
+</body>
+</html>
